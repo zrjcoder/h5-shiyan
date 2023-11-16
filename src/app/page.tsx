@@ -3,43 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const homeModules = [
-  {
-    title: '行业应用',
-    type: 'container',
-    children: [
-      {
-        title: '考勤打卡',
-        href: '/clock',
-        type: 'item',
-        src: '/icons/clock.png'
-      },
-      {
-        title: '市民评价',
-        href: '/evaluation',
-        type: 'item',
-        src: '/icons/evaluation.png'
-      }
-    ]
-  },
-  {
-    title: '问题上报',
-    type: 'container',
-    children: [
-      {
-        title: '公测问题',
-        size: 45,
-        href: '/toilet',
-        type: 'item',
-        src: '/icons/toilet.png'
-      }
-    ]
-  }
-]
+import { homeModules } from './config'
+import { TContainer } from '@/components'
 
 export default function Home() {
   return (
-    <Stack>
+    <TContainer>
       <Box height={180} width={'100%'} position={'relative'}>
         <Image src="/images/home-bg.png" fill alt={'十堰美景'} />
       </Box>
@@ -61,7 +30,7 @@ export default function Home() {
           )
         })}
       </Stack>
-    </Stack>
+    </TContainer>
   )
 
   function Module({ data }: { data: any }) {
