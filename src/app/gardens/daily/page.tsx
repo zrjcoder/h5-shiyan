@@ -1,11 +1,11 @@
 import React from 'react'
-import { TContainer } from '@/components'
+import { TContainer, TCard, GardenPatrol } from '@/components'
 export default function Dialy() {
   return (
     <TContainer>
-      <main>
-        <div>园林日常巡查</div>
-      </main>
+      <TCard title="日常巡查">
+        <GardenPatrol />
+      </TCard>
     </TContainer>
   )
 }

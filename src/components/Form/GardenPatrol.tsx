@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextField, Button, Stack, Link, Card } from '@mui/material'
 import { FormInput, FormSelect } from '@/components'
 
@@ -19,45 +19,40 @@ let bigTitleList = [
   {
     value: '01',
     label: '督导专班',
+    belongToName: '50元/花池',
   },
 ]
 
 interface FormData {
+  districtUnitCode: any
+  districtUnitName: string
   objectUnitId: any
   objectUnitName: string
   assessmentTime: string
-  streetUnitId: any
-  streetUnitName: string
-  pointName: string
+  sectionName: string
   address: string
-  bigTitleCode: string
-  bigTitleName: string
-  titleCode: any
-  titleName: string
   scoreTypeCode: any
   scoreTypeName: string
+  scoreName: string
   score: string
   remark: string
   photo: string
 }
 
-export function EnvPatrol() {
+export function GardenPatrol() {
   const [flag, setFlag] = useState(true)
   const [formData, setFormData] = useState<FormData>({
     // 在这里定义表单的字段
+    districtUnitCode: '',
+    districtUnitName: '',
     objectUnitId: undefined,
     objectUnitName: '',
     assessmentTime: new Date().toLocaleDateString().replace(/\//g, '-'), // 将默认值设置为当前时间,
-    streetUnitId: undefined,
-    streetUnitName: '',
-    pointName: '',
+    sectionName: '',
     address: '',
-    bigTitleCode: '01',
-    bigTitleName: '',
-    titleCode: undefined,
-    titleName: '',
-    scoreTypeCode: undefined,
+    scoreTypeCode: '',
     scoreTypeName: '',
+    scoreName: '',
     score: '',
     remark: '',
     photo: '',
@@ -65,39 +60,39 @@ export function EnvPatrol() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
+    setFormData((prevData) => {
+      let selectBelongToName = bigTitleList.find((item) => value === item.value)
+      return {
+        ...prevData,
+        [name]: value,
+        scoreName:
+          name === 'scoreTypeCode'
+            ? selectBelongToName
+              ? selectBelongToName.belongToName
+              : prevData.scoreName
+            : prevData.scoreName,
+      }
+    })
   }
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFlag(false)
+    const selectdistrictUnitName = bigTitleList.find(
+      (item) => item.value === formData.districtUnitCode
+    )
     const selectObjectUnitName = list.find(
       (item) => item.value === formData.objectUnitId
     )
-    const selectStreetUnitName = list.find(
-      (item) => item.value === formData.streetUnitId
-    )
-    const selectBigTitleName = bigTitleList.find(
-      (item) => item.value === formData.bigTitleName
-    )
-    const selectTitleName = list.find(
-      (item) => item.value === formData.objectUnitId
-    )
-    const selectScoreTypeName = list.find(
+    const selectScoreTypeName = bigTitleList.find(
       (item) => item.value === formData.objectUnitId
     )
 
+    formData.districtUnitName = selectdistrictUnitName
+      ? selectdistrictUnitName.label
+      : ''
     formData.objectUnitName = selectObjectUnitName
       ? selectObjectUnitName.label
       : ''
-
-    formData.streetUnitName = selectStreetUnitName
-      ? selectStreetUnitName.label
-      : ''
-    formData.bigTitleName = selectBigTitleName ? selectBigTitleName.label : ''
-    formData.titleName = selectTitleName ? selectTitleName.label : ''
     formData.scoreTypeName = selectScoreTypeName
       ? selectScoreTypeName.label
       : ''
@@ -109,7 +104,16 @@ export function EnvPatrol() {
     <form onSubmit={handleSubmit}>
       <Stack spacing={2} mt={2}>
         <FormSelect
-          title="被考核单位:"
+          title="区划单位:"
+          name="districtUnitCode"
+          list={list}
+          isrequired={true}
+          value={formData.districtUnitCode}
+          onChange={handleChange}
+          flag={flag || formData.districtUnitCode ? true : false}
+        />
+        <FormSelect
+          title="养护单位:"
           name="objectUnitId"
           list={list}
           isrequired={true}
@@ -118,7 +122,7 @@ export function EnvPatrol() {
           flag={flag || formData.objectUnitId ? true : false}
         />
         <FormInput
-          title="考核时间:"
+          title="巡查时间:"
           name="assessmentTime"
           disabled={true}
           isrequired={true}
@@ -126,22 +130,13 @@ export function EnvPatrol() {
           onChange={handleChange}
           flag={flag || formData.assessmentTime ? true : false}
         />
-        <FormSelect
-          title="所属街道:"
-          name="streetUnitId"
-          list={list}
-          isrequired={true}
-          value={formData.streetUnitId}
-          onChange={handleChange}
-          flag={flag || formData.streetUnitId ? true : false}
-        />
         <FormInput
-          title="点位:"
-          name="pointName"
+          title="标段:"
+          name="sectionName"
           isrequired={true}
-          value={formData.pointName}
+          value={formData.sectionName}
           onChange={handleChange}
-          flag={flag || formData.pointName ? true : false}
+          flag={flag || formData.sectionName ? true : false}
         />
         <FormInput
           title="详细地址:"
@@ -152,35 +147,25 @@ export function EnvPatrol() {
           flag={flag || formData.address ? true : false}
         />
         <FormSelect
-          title="大标题:"
-          name="bigTitleCode"
-          list={bigTitleList}
-          isrequired={true}
-          disabled={true}
-          value={formData.bigTitleCode}
-          onChange={handleChange}
-          flag={flag || formData.bigTitleCode ? true : false}
-        />
-        <FormSelect
-          title="小标题:"
-          name="titleCode"
-          list={list}
-          isrequired={true}
-          value={formData.titleCode}
-          onChange={handleChange}
-          flag={flag || formData.titleCode ? true : false}
-        />
-        <FormSelect
           title="评分标准:"
           name="scoreTypeCode"
-          list={list}
+          list={bigTitleList}
           isrequired={true}
           value={formData.scoreTypeCode}
           onChange={handleChange}
           flag={flag || formData.scoreTypeCode ? true : false}
         />
         <FormInput
-          title="扣分:"
+          title="扣款标准:"
+          name="scoreName"
+          isrequired={true}
+          disabled={true}
+          value={formData.scoreName}
+          onChange={handleChange}
+          flag={flag || formData.scoreName ? true : false}
+        />
+        <FormInput
+          title="巡查扣款:"
           name="score"
           isrequired={true}
           value={formData.score}

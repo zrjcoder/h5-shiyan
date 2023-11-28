@@ -1,9 +1,11 @@
 import React from 'react'
-
-export default function Evaluation() {
+import { TContainer, TCard, CitizenEvaluation } from '@/components'
+export default function Dialy() {
   return (
-    <main>
-      <div>Evaluation</div>
-    </main>
+    <TContainer>
+      <TCard title="市民评价">
+        <CitizenEvaluation />
+      </TCard>
+    </TContainer>
   )
 }

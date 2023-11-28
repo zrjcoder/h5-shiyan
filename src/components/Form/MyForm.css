@@ -16,6 +16,18 @@
 .MuiSelect-root {
   width: 100%; /* 设置输入框和选择框的宽度为100% */
 }
+
+.mui-hetpjt-MuiFormHelperText-root {
+  color: red !important;
+}
+.mui-3cjm13-MuiFormControl-root {
+  margin: 0 !important;
+}
+.mui-75oggo-MuiFormHelperText-root {
+  margin-left: 10px !important;
+  color: red !important;
+}
+
 .required {
   color: red;
 }
