@@ -1,0 +1,29 @@
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+.input-label {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.text-field-wrapper,
+.select-wrapper {
+  flex: 1; /* 让文本输入框和选择框占据剩余的空间 */
+}
+
+.MuiInputBase-root,
+.MuiSelect-root {
+  width: 100%; /* 设置输入框和选择框的宽度为100% */
+}
+.required {
+  color: red;
+}
+.input-wrapper {
+  margin-bottom: 10px;
+}
+.error {
+  color: red;
+  font-size: 10px;
+  margin-top: 5px;
+}
