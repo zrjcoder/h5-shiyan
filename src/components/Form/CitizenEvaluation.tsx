@@ -9,20 +9,20 @@ let tolietList = [
     value: '01',
     label: '公厕1',
     community: '所属社区1',
-    tolietType: '公厕类型1',
+    tolietType: '公厕类型1'
   },
   {
     value: '02',
     label: '公厕2',
     community: '所属社区2',
-    tolietType: '公厕类型2',
+    tolietType: '公厕类型2'
   },
   {
     value: '03',
     label: '公厕3',
     community: '所属社区3',
-    tolietType: '公厕类型3',
-  },
+    tolietType: '公厕类型3'
+  }
 ]
 interface FormData {
   tolietCode: string
@@ -50,7 +50,7 @@ export function CitizenEvaluation() {
     surfaceAir: '',
     ventilate: '',
     facilityStatus: '',
-    completeFacilities: '',
+    completeFacilities: ''
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +58,7 @@ export function CitizenEvaluation() {
     setFormData((prevData) => {
       return {
         ...prevData,
-        [name]: value,
+        [name]: value
       }
     })
   }
@@ -87,7 +87,7 @@ export function CitizenEvaluation() {
         <form onSubmit={handleSubmit}>
           <Stack spacing={2} mt={2}>
             <FormSelect
-              title="公厕名称:"
+              title="公厕名称1:"
               name="tolietCode"
               list={tolietList}
               isrequired={false}
