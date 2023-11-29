@@ -30,7 +30,7 @@ export async function fetchToiletList() {
 }
 
 async function getAccessToken() {
-  const res = await fetch(`${baseUrl}/auth/oauth/token`, {
+  const res = await fetch(`${process.env.URL}/auth/oauth/token`, {
     method: 'POST',
     cache: 'force-cache',
     body: qs.stringify({
