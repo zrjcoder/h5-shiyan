@@ -53,7 +53,7 @@ export function CitizenEvaluation() {
     completeFacilities: ''
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target
     setFormData((prevData) => {
       return {
@@ -62,7 +62,7 @@ export function CitizenEvaluation() {
       }
     })
   }
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault()
     setFlag(false)
     const selectTolietName = tolietList.find(

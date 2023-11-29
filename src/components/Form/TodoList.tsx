@@ -10,23 +10,23 @@ import {
   ListItemText,
   Link,
   Button,
-  CircularProgress,
+  CircularProgress
 } from '@mui/material'
 import './MyForm.css' // 导入自定义的 CSS 样式
 
 let pointList = [
   {
     value: '01',
-    label: '环卫街道',
+    label: '环卫街道'
   },
   {
     value: '02',
-    label: '五堰街道',
+    label: '五堰街道'
   },
   {
     value: '03',
-    label: '江汉路街道',
-  },
+    label: '江汉路街道'
+  }
 ]
 
 let list = [
@@ -35,22 +35,22 @@ let list = [
     title: 11,
     street: '红卫街道',
     point: '湖北汽车工业学院',
-    time: '2023-11-29',
+    time: '2023-11-29'
   },
   {
     id: 2,
     title: 22,
     street: '红卫街道',
     point: '湖北汽车工业学院',
-    time: '2023-11-29',
+    time: '2023-11-29'
   },
   {
     id: 3,
     title: 33,
     street: '红卫街道',
     point: '湖北汽车工业学院',
-    time: '2023-11-29',
-  },
+    time: '2023-11-29'
+  }
 ]
 
 interface FormData {
@@ -64,7 +64,7 @@ export function TodoList() {
     streetPointCode: undefined,
     streetPointName: '',
     envPointCode: undefined,
-    envPointName: '',
+    envPointName: ''
   })
   const [taskList, setTaskList] = useState(list)
   const [isLoading, setIsLoading] = useState(false)
@@ -76,11 +76,11 @@ export function TodoList() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [taskList, isLoading])
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }))
     console.log(formData, '待办任务filter')
   }
@@ -102,22 +102,22 @@ export function TodoList() {
           title: 44,
           street: '红卫街道',
           point: '湖北汽车工业学院',
-          time: '2023-11-29',
+          time: '2023-11-29'
         },
         {
           id: 5,
           title: 55,
           street: '红卫街道',
           point: '湖北汽车工业学院',
-          time: '2023-11-29',
+          time: '2023-11-29'
         },
         {
           id: 6,
           title: 66,
           street: '红卫街道',
           point: '湖北汽车工业学院',
-          time: '2023-11-29',
-        },
+          time: '2023-11-29'
+        }
       ]
       setTaskList((prevItems) => [...prevItems, ...newTaskList])
       setIsLoading(false) // 数据加载完成
@@ -184,7 +184,7 @@ export function TodoList() {
             <div
               style={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'center'
               }}
             >
               <CircularProgress size={20} />

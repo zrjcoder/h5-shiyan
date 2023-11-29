@@ -6,7 +6,8 @@ import {
   MenuItem,
   InputLabel,
   FormHelperText,
-  FormControl
+  FormControl,
+  SelectProps
 } from '@mui/material'
 import './MyForm.css' // 导入自定义的 CSS 样式
 
@@ -14,13 +15,13 @@ const labelWidth = '80px'
 
 interface FormSelectProps {
   title: string
-  name: string
-  list: { value: any; label: string }[]
+  name?: string
+  list?: { value: any; label: string }[]
   disabled?: boolean
-  isrequired: boolean
-  value: any
-  onChange: any
-  flag: boolean
+  isrequired?: boolean
+  value?: any
+  onChange?: (result: any) => void
+  flag?: boolean
 }
 
 export function FormSelect({
@@ -31,11 +32,9 @@ export function FormSelect({
   isrequired,
   value,
   onChange,
-  flag
+  flag,
+  ...props
 }: FormSelectProps) {
-  const handleSelectChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-    onChange({ target: { name, value: e.target.value } })
-  }
   useEffect(() => {}, [])
   return (
     <div className="input-wrapper">
@@ -53,9 +52,13 @@ export function FormSelect({
           style={{ width: '90%' }}
           disabled={disabled}
           value={value}
-          onChange={handleSelectChange}
           MenuProps={{
             placeholder: '请选择' // 设置placeholder
+          }}
+          onChange={(result: any) => {
+            if (onChange) {
+              onChange({ target: { name, value: result?.target?.value } })
+            }
           }}
         >
           {(list ?? []).map((item) => (

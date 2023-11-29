@@ -1,68 +1,42 @@
 import React from 'react'
-import { TextField, InputLabel, FormControl, useEffect } from '@mui/material'
+import { TextField, InputLabel, TextFieldProps } from '@mui/material'
 import './MyForm.css' // 导入自定义的 CSS 样式
 
 const labelWidth = '80px'
 interface FormInputProps {
   title: string
   name: string
-  isrequired: boolean
-  disabled?: boolean
-  multiline: boolean
-  rows: number
-  value: any
-  flag: boolean
-  placeholder: string
-  inputtype: string
+  isrequired?: boolean
+  flag?: boolean
+  inputtype?: string
 }
 
-export function FormInput({ ...props }: FormInputProps) {
+export function FormInput({
+  title,
+  name,
+  isrequired,
+  flag,
+  inputtype,
+  ...props
+}: FormInputProps & TextFieldProps) {
   return (
     <div className="input-wrapper">
       <InputLabel
-        htmlFor={props.name}
+        htmlFor={name}
         className="input-label"
         style={{ width: labelWidth, marginLeft: '10px' }}
       >
-        {props.isrequired ? (
-          <span className="required">*</span>
-        ) : (
-          <span>&ensp;</span>
-        )}
-        {props.title}
+        {isrequired && <span className="required">*</span>}
+        {title}
       </InputLabel>
       <div className="text-field-wrapper">
-        {props.isrequired ? (
-          props.flag ? (
-            <TextField
-              type={props.inputtype ? props.inputtype : ''}
-              placeholder={props.placeholder}
-              {...props}
-              style={{ width: '90%' }}
-              multiline
-              rows={props.rows}
-            />
-          ) : (
-            <TextField
-              type={props.inputtype ? props.inputtype : ''}
-              placeholder={props.placeholder}
-              {...props}
-              style={{ width: '90%' }}
-              helperText="必填"
-              multiline
-              rows={props.rows}
-            />
-          )
-        ) : (
-          <TextField
-            type={props.inputtype ? props.inputtype : ''}
-            placeholder={props.placeholder}
-            {...props}
-            style={{ width: '90%' }}
-            multiline
-            rows={props.rows}
-          />
-        )}
+        <TextField
+          type={inputtype ? inputtype : ''}
+          style={{ width: '90%' }}
+          helperText="必填"
+          multiline
+          {...props}
+        />
       </div>
     </div>
   )
