@@ -2,7 +2,7 @@ import { Box, BoxProps, Paper, Stack } from '@mui/material'
 import React, { ReactNode } from 'react'
 
 export function TCard({
-  title = '标题',
+  title = '',
   children,
   ...props
 }: {
@@ -14,7 +14,7 @@ export function TCard({
       <Paper
         elevation={5}
         sx={{
-          padding: 3 / 2
+          padding: 3 / 2,
         }}
       >
         <Stack direction={'row'} position={'relative'} alignItems={'center'}>

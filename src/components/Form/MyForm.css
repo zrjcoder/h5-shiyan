@@ -1,0 +1,69 @@
+ul,
+li {
+  list-style: none;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+}
+.input-label {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.text-field-wrapper,
+.select-wrapper {
+  flex: 1; /* 让文本输入框和选择框占据剩余的空间 */
+  min-width: 100px;
+}
+
+.MuiInputBase-root,
+.MuiSelect-root {
+  width: 100%; /* 设置输入框和选择框的宽度为100% */
+}
+
+.mui-hetpjt-MuiFormHelperText-root {
+  color: red !important;
+}
+.mui-3cjm13-MuiFormControl-root {
+  margin: 0 !important;
+}
+.mui-75oggo-MuiFormHelperText-root {
+  margin-left: 10px !important;
+  color: red !important;
+}
+
+.required {
+  color: red;
+}
+.input-wrapper {
+  margin-bottom: 10px;
+}
+.error {
+  color: red;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.todoList_filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.todoList_statistics {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: -40px;
+}
+
+.todoList_contianer {
+  .mui-1ps6pg7-MuiPaper-root {
+    padding: 0px 10px;
+    margin: 20px;
+  }
+}
