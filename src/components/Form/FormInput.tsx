@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField, InputLabel, FormControl, useEffect } from '@mui/material'
 import './MyForm.css' // 导入自定义的 CSS 样式
 
-const labelWidth = '120px'
+const labelWidth = '80px'
 interface FormInputProps {
   title: string
   name: string

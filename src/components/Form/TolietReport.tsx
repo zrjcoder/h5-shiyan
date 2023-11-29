@@ -86,79 +86,81 @@ export function TolietReport() {
   return (
     <Fragment>
       <Header title="公厕问题上报" />
-      <form onSubmit={handleSubmit}>
-        <Stack spacing={2} mt={2}>
-          <FormInput
-            title="上报人:"
-            name="reportPerson"
-            isrequired={true}
-            value={formData.reportPerson}
-            onChange={handleChange}
-            flag={flag || formData.reportPerson ? true : false}
-          />
-          <FormInput
-            title="联系电话:"
-            name="phone"
-            isrequired={true}
-            value={formData.phone}
-            onChange={handleChange}
-            flag={flag || formData.phone ? true : false}
-          />
-          <FormSelect
-            title="公厕名称:"
-            name="tolietCode"
-            list={tolietList}
-            isrequired={true}
-            value={formData.tolietCode}
-            onChange={handleChange}
-            flag={flag || formData.tolietCode ? true : false}
-          />
-          <FormInput
-            title="所属社区:"
-            name="community"
-            isrequired={false}
-            disabled={true}
-            value={formData.community}
-            onChange={handleChange}
-            flag={flag || formData.community ? true : false}
-          />
-          <FormInput
-            title="公厕类型:"
-            name="tolietType"
-            isrequired={false}
-            disabled={true}
-            value={formData.tolietType}
-            onChange={handleChange}
-            flag={flag || formData.tolietType ? true : false}
-          />
-          <FormInput
-            title="问题描述:"
-            name="description"
-            isrequired={true}
-            rows={4}
-            value={formData.description}
-            onChange={handleChange}
-            flag={flag || formData.description ? true : false}
-          />
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Link href={'/'}>
+      <Card style={{ height: 'calc(100vh - 56px)', overflow: 'scroll' }}>
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={2} mt={2}>
+            <FormInput
+              title="上报人:"
+              name="reportPerson"
+              isrequired={true}
+              value={formData.reportPerson}
+              onChange={handleChange}
+              flag={flag || formData.reportPerson ? true : false}
+            />
+            <FormInput
+              title="联系电话:"
+              name="phone"
+              isrequired={true}
+              value={formData.phone}
+              onChange={handleChange}
+              flag={flag || formData.phone ? true : false}
+            />
+            <FormSelect
+              title="公厕名称:"
+              name="tolietCode"
+              list={tolietList}
+              isrequired={true}
+              value={formData.tolietCode}
+              onChange={handleChange}
+              flag={flag || formData.tolietCode ? true : false}
+            />
+            <FormInput
+              title="所属社区:"
+              name="community"
+              isrequired={false}
+              disabled={true}
+              value={formData.community}
+              onChange={handleChange}
+              flag={flag || formData.community ? true : false}
+            />
+            <FormInput
+              title="公厕类型:"
+              name="tolietType"
+              isrequired={false}
+              disabled={true}
+              value={formData.tolietType}
+              onChange={handleChange}
+              flag={flag || formData.tolietType ? true : false}
+            />
+            <FormInput
+              title="问题描述:"
+              name="description"
+              isrequired={true}
+              rows={4}
+              value={formData.description}
+              onChange={handleChange}
+              flag={flag || formData.description ? true : false}
+            />
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Link href={'/'}>
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: '20px', marginRight: '20px' }}
+                >
+                  返回
+                </Button>
+              </Link>
               <Button
+                type="submit"
                 variant="outlined"
-                style={{ marginTop: '20px', marginRight: '20px' }}
+                style={{ marginTop: '20px' }}
               >
-                返回
+                提交
               </Button>
-            </Link>
-            <Button
-              type="submit"
-              variant="outlined"
-              style={{ marginTop: '20px' }}
-            >
-              提交
-            </Button>
-          </div>
-        </Stack>
-      </form>
+            </div>
+          </Stack>
+        </form>
+      </Card>
     </Fragment>
   )
 }

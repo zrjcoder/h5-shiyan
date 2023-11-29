@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import './MyForm.css' // 导入自定义的 CSS 样式
 
-const labelWidth = '120px'
+const labelWidth = '80px'
 
 interface FormSelectProps {
   title: string

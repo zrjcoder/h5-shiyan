@@ -1,6 +1,12 @@
+ul,
+li {
+  list-style: none;
+}
+
 .input-wrapper {
   display: flex;
   align-items: center;
+  min-width: 100px;
 }
 .input-label {
   width: 120px;
@@ -10,6 +16,7 @@
 .text-field-wrapper,
 .select-wrapper {
   flex: 1; /* 让文本输入框和选择框占据剩余的空间 */
+  min-width: 100px;
 }
 
 .MuiInputBase-root,
@@ -38,4 +45,25 @@
   color: red;
   font-size: 10px;
   margin-top: 5px;
+}
+
+.todoList_filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.todoList_statistics {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: -40px;
+}
+
+.todoList_contianer {
+  .mui-1ps6pg7-MuiPaper-root {
+    padding: 0px 10px;
+    margin: 20px;
+  }
 }
