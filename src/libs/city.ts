@@ -1,10 +1,8 @@
 // @ts-ignore
 import qs from 'qs'
 
-const baseUrl = 'http://113.56.40.34:8048'
-
 export function createCityRequest(path: string, token: string, opts: any = {}) {
-  return fetch(`${baseUrl}${path}`, {
+  return fetch(`${process.env.URL}${path}`, {
     ...opts,
     headers: {
       ...opts.headers,
