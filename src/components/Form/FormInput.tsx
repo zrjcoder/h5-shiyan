@@ -6,10 +6,10 @@ const labelWidth = '80px'
 interface FormInputProps {
   title: string
   name: string
-  isrequired: Boolean
-  disabled: Boolean
-  multiline: Boolean
-  rows: Number
+  isrequired: boolean
+  disabled?: boolean
+  multiline: boolean
+  rows: number
   value: any
   flag: boolean
   placeholder: string
