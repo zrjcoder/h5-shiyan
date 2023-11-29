@@ -37,7 +37,7 @@ async function getAccessToken() {
     cache: 'force-cache',
     body: qs.stringify({
       systemTag: 'PC',
-      username: '管理员2',
+      username: '管理员5',
       password: '202cb962ac59075b964b07152d234b70',
       grant_type: 'inner'
     }),

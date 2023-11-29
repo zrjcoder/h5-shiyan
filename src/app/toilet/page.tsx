@@ -11,12 +11,12 @@ import ToiletItem from './ToiletItem'
 import { LinkWrapper } from '@/components'
 
 export default async function Toilet() {
-  // const { records } = await fetchToiletList()
+  const { records } = await fetchToiletList()
 
   return (
     <TContainer>
       <List>
-        {[].map((item: any) => {
+        {(records ?? []).map((item: any) => {
           return (
             <LinkWrapper href={'/toilet/detail'} key={item.toiletNumber}>
               <ListItem>
