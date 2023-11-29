@@ -11,31 +11,21 @@ import ToiletItem from './ToiletItem'
 import { LinkWrapper } from '@/components'
 
 export default async function Toilet() {
-  // const { records } = await fetchToiletList()
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos')
-  const list = await res.json()
+  const { records } = await fetchToiletList()
 
   return (
-    <Box>
-      {list.map((item: any) => {
-        return <Box key={item.userId}>{item?.title}</Box>
-      })}
-    </Box>
+    <TContainer>
+      <List>
+        {(records ?? []).map((item: any) => {
+          return (
+            <LinkWrapper href={'/toilet/detail'} key={item.toiletNumber}>
+              <ListItem>
+                <ToiletItem data={item} />
+              </ListItem>
+            </LinkWrapper>
+          )
+        })}
+      </List>
+    </TContainer>
   )
-
-  // return (
-  //   <TContainer>
-  //     <List>
-  //       {(records ?? []).map((item: any) => {
-  //         return (
-  //           <LinkWrapper href={'/toilet/detail'} key={item.toiletNumber}>
-  //             <ListItem>
-  //               <ToiletItem data={item} />
-  //             </ListItem>
-  //           </LinkWrapper>
-  //         )
-  //       })}
-  //     </List>
-  //   </TContainer>
-  // )
 }

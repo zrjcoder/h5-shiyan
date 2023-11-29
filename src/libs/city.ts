@@ -1,5 +1,8 @@
 // @ts-ignore
 import qs from 'qs'
+import { fetch, setGlobalDispatcher, Agent } from 'undici'
+
+setGlobalDispatcher(new Agent({ connect: { timeout: 20_000 } }))
 
 export function createCityRequest(path: string, token: string, opts: any = {}) {
   return fetch(`${process.env.URL}${path}`, {
@@ -26,13 +29,13 @@ export async function fetchToiletList() {
   })
 
   const result = await res.json()
-  return result?.result
+  return (result as any)?.result
 }
 
 async function getAccessToken() {
   const res = await fetch(`${process.env.URL}/auth/oauth/token`, {
     method: 'POST',
-    cache: 'force-cache',
+    // cache: 'force-cache',
     body: qs.stringify({
       systemTag: 'PC',
       username: '管理员5',
@@ -46,5 +49,5 @@ async function getAccessToken() {
   })
 
   const result = await res.json()
-  return result?.result?.accessToken
+  return (result as any)?.result?.accessToken
 }
