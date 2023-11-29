@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { TextField, Button, Stack, Link, Card } from '@mui/material'
-import { FormInput, FormSelect } from '@/components'
+import { FormInput, FormSelect, Header } from '@/components'
 
 let list = [
   {
@@ -106,120 +106,123 @@ export function EnvPatrol() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Stack spacing={2} mt={2}>
-        <FormSelect
-          title="被考核单位:"
-          name="objectUnitId"
-          list={list}
-          isrequired={true}
-          value={formData.objectUnitId}
-          onChange={handleChange}
-          flag={flag || formData.objectUnitId ? true : false}
-        />
-        <FormInput
-          title="考核时间:"
-          name="assessmentTime"
-          disabled={true}
-          isrequired={true}
-          value={formData.assessmentTime}
-          onChange={handleChange}
-          flag={flag || formData.assessmentTime ? true : false}
-        />
-        <FormSelect
-          title="所属街道:"
-          name="streetUnitId"
-          list={list}
-          isrequired={true}
-          value={formData.streetUnitId}
-          onChange={handleChange}
-          flag={flag || formData.streetUnitId ? true : false}
-        />
-        <FormInput
-          title="点位:"
-          name="pointName"
-          isrequired={true}
-          value={formData.pointName}
-          onChange={handleChange}
-          flag={flag || formData.pointName ? true : false}
-        />
-        <FormInput
-          title="详细地址:"
-          name="address"
-          isrequired={true}
-          value={formData.address}
-          onChange={handleChange}
-          flag={flag || formData.address ? true : false}
-        />
-        <FormSelect
-          title="大标题:"
-          name="bigTitleCode"
-          list={bigTitleList}
-          isrequired={true}
-          disabled={true}
-          value={formData.bigTitleCode}
-          onChange={handleChange}
-          flag={flag || formData.bigTitleCode ? true : false}
-        />
-        <FormSelect
-          title="小标题:"
-          name="titleCode"
-          list={list}
-          isrequired={true}
-          value={formData.titleCode}
-          onChange={handleChange}
-          flag={flag || formData.titleCode ? true : false}
-        />
-        <FormSelect
-          title="评分标准:"
-          name="scoreTypeCode"
-          list={list}
-          isrequired={true}
-          value={formData.scoreTypeCode}
-          onChange={handleChange}
-          flag={flag || formData.scoreTypeCode ? true : false}
-        />
-        <FormInput
-          title="扣分:"
-          name="score"
-          isrequired={true}
-          value={formData.score}
-          onChange={handleChange}
-          flag={flag || formData.score ? true : false}
-        />
-        <FormInput
-          title="备注:"
-          name="remark"
-          rows={4}
-          value={formData.remark}
-          onChange={handleChange}
-        />
-        <FormInput
-          title="照片:"
-          name="photo"
-          isrequired={true}
-          value={formData.photo}
-          onChange={handleChange}
-          flag={flag || formData.photo ? true : false}
-        />
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Link href={'/'}>
+    <Fragment>
+      <Header title="日常检查"></Header>
+      <form onSubmit={handleSubmit}>
+        <Stack spacing={2} mt={2}>
+          <FormSelect
+            title="被考核单位:"
+            name="objectUnitId"
+            list={list}
+            isrequired={true}
+            value={formData.objectUnitId}
+            onChange={handleChange}
+            flag={flag || formData.objectUnitId ? true : false}
+          />
+          <FormInput
+            title="考核时间:"
+            name="assessmentTime"
+            disabled={true}
+            isrequired={true}
+            value={formData.assessmentTime}
+            onChange={handleChange}
+            flag={flag || formData.assessmentTime ? true : false}
+          />
+          <FormSelect
+            title="所属街道:"
+            name="streetUnitId"
+            list={list}
+            isrequired={true}
+            value={formData.streetUnitId}
+            onChange={handleChange}
+            flag={flag || formData.streetUnitId ? true : false}
+          />
+          <FormInput
+            title="点位:"
+            name="pointName"
+            isrequired={true}
+            value={formData.pointName}
+            onChange={handleChange}
+            flag={flag || formData.pointName ? true : false}
+          />
+          <FormInput
+            title="详细地址:"
+            name="address"
+            isrequired={true}
+            value={formData.address}
+            onChange={handleChange}
+            flag={flag || formData.address ? true : false}
+          />
+          <FormSelect
+            title="大标题:"
+            name="bigTitleCode"
+            list={bigTitleList}
+            isrequired={true}
+            disabled={true}
+            value={formData.bigTitleCode}
+            onChange={handleChange}
+            flag={flag || formData.bigTitleCode ? true : false}
+          />
+          <FormSelect
+            title="小标题:"
+            name="titleCode"
+            list={list}
+            isrequired={true}
+            value={formData.titleCode}
+            onChange={handleChange}
+            flag={flag || formData.titleCode ? true : false}
+          />
+          <FormSelect
+            title="评分标准:"
+            name="scoreTypeCode"
+            list={list}
+            isrequired={true}
+            value={formData.scoreTypeCode}
+            onChange={handleChange}
+            flag={flag || formData.scoreTypeCode ? true : false}
+          />
+          <FormInput
+            title="扣分:"
+            name="score"
+            isrequired={true}
+            value={formData.score}
+            onChange={handleChange}
+            flag={flag || formData.score ? true : false}
+          />
+          <FormInput
+            title="备注:"
+            name="remark"
+            rows={4}
+            value={formData.remark}
+            onChange={handleChange}
+          />
+          <FormInput
+            title="照片:"
+            name="photo"
+            isrequired={true}
+            value={formData.photo}
+            onChange={handleChange}
+            flag={flag || formData.photo ? true : false}
+          />
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link href={'/'}>
+              <Button
+                variant="outlined"
+                style={{ marginTop: '20px', marginRight: '20px' }}
+              >
+                返回
+              </Button>
+            </Link>
             <Button
+              type="submit"
               variant="outlined"
-              style={{ marginTop: '20px', marginRight: '20px' }}
+              style={{ marginTop: '20px' }}
             >
-              返回
+              提交
             </Button>
-          </Link>
-          <Button
-            type="submit"
-            variant="outlined"
-            style={{ marginTop: '20px' }}
-          >
-            提交
-          </Button>
-        </div>
-      </Stack>
-    </form>
+          </div>
+        </Stack>
+      </form>
+    </Fragment>
   )
 }
