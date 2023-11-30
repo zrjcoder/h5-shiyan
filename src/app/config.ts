@@ -35,8 +35,8 @@ export const homeModules = [
     children: [
       {
         title: '公厕问题上报',
-        // href: '/problemReport/toliet',
-        href: '/toilet',
+        href: '/problemReport/toliet',
+        // href: '/toilet',
         type: 'item',
         src: '/icons/toilet.png'
       },
